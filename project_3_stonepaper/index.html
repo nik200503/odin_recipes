@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>stone paper sissor</title>
+</head>
+<body>
+    <script>
+        console.log("Welcome to the game of Stone, Paper, Scissors!");
+        console.log('lets play!');
+        let userPoints = 0;
+        let computerPoints = 0;
+        function playGame() {
+            const userChoice = prompt("Enter your choice (stone, paper, or scissors):").toLowerCase();
+            const choices = ["stone", "paper", "scissors"];
+            const computerChoice = choices[Math.floor(Math.random() * choices.length)];
+
+            console.log(`You chose: ${userChoice}`);
+            console.log(`Computer chose: ${computerChoice}`);
+
+            if (userChoice === computerChoice) {
+                console.log("It's a tie!");
+            } else if (
+                (userChoice === "stone" && computerChoice === "scissors") ||
+                (userChoice === "paper" && computerChoice === "stone") ||
+                (userChoice === "scissors" && computerChoice === "paper")
+            ) {
+                console.log("You win!");
+                userPoints++;
+            } else {
+                console.log("You lose!");
+                computerPoints++;
+            }
+        }
+        const numberfRounds = parseInt(prompt("How many rounds do you want to play?"), 10);
+        for (let i = 0; i < numberfRounds; i++) {
+            console.log(`Round ${i + 1}:`);
+            playGame();
+        }
+        if (userPoints > computerPoints) {
+            console.log(`You won the game! Final score: You ${userPoints} - Computer ${computerPoints}`);
+        } else if (userPoints < computerPoints) {
+            console.log(`You lost the game! Final score: You ${userPoints} - Computer ${computerPoints}`);
+        } else {
+            console.log(`The game is a tie! Final score: You ${userPoints} - Computer ${computerPoints}`);
+        }
+        console.log("Thanks for playing!");
+    </script>
+</body>
+</html>
